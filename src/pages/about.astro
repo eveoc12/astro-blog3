@@ -1,23 +1,27 @@
 ---
-const pageTitle = "关于我";
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 
-const identity = {
+
+const pageTitle = "关于我";   {/*定义和使用变量*/}
+
+const identity = {                  /*编写 JavaScript 表达式 */ 
   firstName: "莎拉",
   country: "加拿大",
   occupation: "技术撰稿人",
   hobbies: ["摄影", "观鸟", "棒球"],
 };
-
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
-const happy = true;
+const happy = true;        {/*条件渲染元素*/ }
 const finished = false;
 const goal = 3   ;
 
-const skillColor = "navy";
+const skillColor = "navy";    {/*定义css变量*/ }
 const fontWeight = "bold";
 const textCase = "uppercase";
-import '../styles/global.css';
+
 ---
 
 
@@ -30,7 +34,7 @@ import '../styles/global.css';
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 
-    <style define:vars={{skillColor, fontWeight, textCase}}>
+    <style define:vars={{skillColor, fontWeight, textCase}}>    {/*为单页面应用样式 */}     {/*使用css变量*/ }
       h1 {
         color: purple;
         font-size: 4rem;
@@ -47,11 +51,7 @@ import '../styles/global.css';
 	<body>
 		<slot />
 
-         
-    <a href="/">首页</a>
-    <a href="/about/">关于</a>
-    <a href="/blog/">博客</a>
-    
+    <Header/>
 
   <h1>我的 Astro 网站</h1>
   <h1>{pageTitle}</h1>
@@ -75,12 +75,16 @@ import '../styles/global.css';
   {skills.map((skill) => <li class = "skill">{skill}</li>)}
 </ul>
 
-{happy && <p>我非常乐意学习 Astro！</p>}
+{happy && <p>我非常乐意学习 Astro！</p>} {/*使用条件渲染元素*/ }
 
 {finished && <p>我完成了这节教程！</p>}
 
-{goal === 3 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}  <!--  这是一个三元运算符的例子--> {/* JS 注释语法也是有效的 */}
+{goal === 3 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}  <!--  这是一个三元运算符的例子--> {/* 建议使用JS 注释语法 */}
 
+<Footer/>  {/* 使用引入的页脚组件 */}
 
+<script>
+  import "../scripts/menu.js";
+ </script>
 	</body>
 </html>
