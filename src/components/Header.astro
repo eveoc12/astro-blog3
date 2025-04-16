@@ -1,12 +1,14 @@
 ---
 import Navigation from '../components/Navigation.astro';   {/* 引入导航组件  ——重构——  使用组件使得重复元素得以复用*/}
 import Hamburger from '../components/Hamburger.astro'; {/* 引入汉堡菜单组件 */}
+import ThemeIcon from './ThemeIcon.astro';
 ---
 
 <header>
 <nav>
  <Hamburger />
-<Navigation/>
+ <ThemeIcon />
+ <Navigation/>
 </nav>
 
 
