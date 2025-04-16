@@ -1,41 +1,17 @@
 ---
-import '../styles/global.css';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-
-const pageTitle = "关于我";
-
+import BaseLayout from '../layouts/BaseLayout.astro'; {/* 引入布局 */}
+import BlogPost from '../components/BlogPost.astro';
+const pageTitle = "博客";
+const myName = "eve^^";
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));{/* glob 模式是一个支持特殊通配符的文件路径。用于一次引用项目中的多个文件 */}
 
 ---
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-    <body>
-      <Header/>
 
-      
-        <h1>我的 Astro 网站</h1>
-        <h1>我的 Astro 学习博客</h1>
-        <p>在这里，我将分享我的 Astro 学习之旅。</p>
-        <ul>
-          <li><a href="/posts/post-1/">文章 1</a></li>
-          <li><a href="/posts/post-2/">文章 2</a></li>
-          <li><a href="/posts/post-3/">文章 3</a></li>
+<BaseLayout pageTitle={pageTitle}>
+  <p>在这里，我将分享我的 Astro 学习之旅。</p>
+  <ul>
+   
+    {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
 
-        </ul>
-
-<Footer/>  {/* 使用引入的页脚组件 */}
-
-
-<script>
-  import "../scripts/menu.js";
- </script>
- 
-      </body>
-</html>
+  </ul>
+</BaseLayout>

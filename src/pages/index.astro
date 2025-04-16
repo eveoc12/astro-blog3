@@ -1,31 +1,12 @@
 ---
-import Footer from '../components/Footer.astro'; {/* 引入页脚组件 */}
-import '../styles/global.css';
-import Header from '../components/Header.astro';  {/* 引入导航组件  ——重构——  使用组件使得重复元素得以复用*/}
-
+import BaseLayout from '../layouts/BaseLayout.astro'; {/* 引入布局 */}
 const pageTitle = "首页";
 const myName = "eve^^";
+
+
 ---
 
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type ="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content = {Astro.generator} >
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-
-    <Header/> {/* 使用引入导航组件 */}
-
-    <h1>{myName}的 Astro 站点</h1>
-
-<Footer/>  {/* 使用引入的页脚组件 */}
-
-<script>
- import "../scripts/menu.js";
-</script>
-
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>我的副标题</h2>
+ 
+</BaseLayout>
